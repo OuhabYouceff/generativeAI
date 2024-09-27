@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="{{ url_for('static', filename='images/observation.png') }}">
+  <title>History</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="background">
+    <div class="floating-container history-container">
+      <h1>Generated Images</h1>
+      <div class="image-grid">
+        {% for image in images %}
+          <div class="image-item">
+            <img src="{{ url_for('serve_image', image_id=image.id) }}" alt="Generated Image">
+            <a href="{{ url_for('download_image', image_id=image.id) }}" class="button">Download</a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>

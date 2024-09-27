@@ -1,0 +1,188 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+    --text-color: #FFFFFF;
+    --icon-color: #ACACBE;
+    --icon-hover-bg: #5b5e71;
+    --placeholder-color: #dcdcdc;
+    --outgoing-chat-bg: #1A3636;
+    --incoming-chat-bg: #40534C;
+    --outgoing-chat-border: #343541;
+    --incoming-chat-border: #444654;
+}
+
+:root {
+    --yale-blue: #1b6a8f;
+    --blue-ncs: #710627;
+    --gunmetal: #BBCEA8;
+    --bright-navy-blue: #007cb5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--yale-blue);
+}
+
+.background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.floating-container {
+  background: wheat;
+  border-radius: 15px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  text-align: center;
+  animation: float 3s ease-in-out infinite;
+  max-width: 600px;
+  width: 100%;
+}
+
+.floating-container h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.floating-container p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: var(--blue-ncs);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.button:hover {
+  background-color: var(--yale-blue);
+  transform: translateY(-3px);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="url"],
+input[type="submit"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid var(--blue-ncs);
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #333;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="url"]:focus {
+  border-color: var(--yale-blue);
+  box-shadow: 0 0 8px rgba(27, 106, 143, 0.3);
+  outline: none;
+}
+
+/* Submit Button */
+input[type="submit"] {
+  background-color: var(--blue-ncs);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+input[type="submit"]:hover {
+  background-color: var(--yale-blue);
+  transform: translateY(-3px);
+}
+
+/* Additional styling to integrate with existing design */
+.floating-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input[type="text"],
+input[type="url"] {
+  margin-bottom: 20px;
+}
+
+input[type="submit"] {
+  padding: 12px 24px;
+  font-size: 1.1rem;
+}
+
+/* Styling for the history page */
+.history-container {
+  max-width: 1000px;
+  max-height: 500px; /* Adjust the height as needed */
+  overflow-y: auto;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 15px;
+  background: wheat;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  justify-content: center;
+}
+
+.image-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-item img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}

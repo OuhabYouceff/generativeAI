@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="{{ url_for('static', filename='images/observation.png') }}">
+  <title>Logged In</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="background">
+    <div class="floating-container">
+      <h1>Welcome!</h1>
+      <p>You have successfully set the Ngrok URL.</p>
+      <div class="button-container">
+        <a href="{{ url_for('models') }}" class="button">Generate an Image</a>
+        <a href="{{ url_for('video_index') }}" class="button">Generate a Video</a>
+        <a href="{{ url_for('history') }}" class="button">History of images</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

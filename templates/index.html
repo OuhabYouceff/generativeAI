@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" href="{{ url_for('static', filename='images/observation.png') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VisioWave</title>
+    <link rel="stylesheet" href="/static/css/style1.css" />
+</head>
+<body>
+    
+    <video autoplay muted loop playsinline id="background-video">
+        <source src="/static/img/Welcome to Cyber City! [Deltarune 3D Animation].mp4" type="video/mp4">
+    </video>
+    
+    <main>
+        <div class="box">
+            <div class="inner-box">
+                <div class="forms-wrap">
+
+                    <form autocomplete="off" class="sign-in-form" action="/login" method="POST">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <div class="logo">
+                            <img src="/static/img/logo2.png" alt="logo" width="90px" height="76px"/>
+                            <h4>VisioWave</h4>
+                        </div>
+
+                        <div class="heading">
+                            <h2>Welcome Back</h2>
+                            <h6>Not registered yet?</h6>
+                            <a href="#" class="toggle">Sign up</a>
+                        </div>
+
+                        <div class="actual-form">
+                            <div class="input-wrap">
+                                <input
+                                    type="text"
+                                    minlength="3"
+                                    class="input-field"
+                                    autocomplete="off"
+                                    name="Username"
+                                    required
+                                />
+                                <label>Name</label>
+                            </div>
+
+                            <div class="input-wrap">
+                                <input
+                                    type="password"
+                                    minlength="3"
+                                    class="input-field"
+                                    name="Password"
+                                    autocomplete="off"
+                                    required
+                                />
+                                <label>Password</label>
+                            </div>
+                            {% if test %}
+                            <style>
+                                #pass {
+                                    color: red;
+                                    border-bottom: 1px solid red;
+                                }
+                            </style>
+                            <p style="color: red; font-size: small; margin-bottom: 30px;">Password or Username incorrect. Try Again!</p>
+                            {% endif %}
+                            <input type="submit" value="Sign In" class="sign-btn" />
+
+                            <p class="text">
+                                Forgotten your password or your login details?
+                                <a href="#">Get help</a> signing in
+                            </p>
+                        </div>
+                    </form>
+
+                    <form autocomplete="off" class="sign-up-form" action="/register" method="POST">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <div class="logo">
+                            <img src="/static/img/logo2.png" alt="easyclass" />
+                        </div>
+
+                        <div class="heading">
+                            <h2>Get Started</h2>
+                            <h6>Already have an account?</h6>
+                            <a href="#" class="toggle">Sign in</a>
+                        </div>
+
+                        <div class="actual-form">
+                            <div class="input-wrap">
+                                <input
+                                    type="text"
+                                    minlength="4"
+                                    class="input-field"
+                                    name="DUsername"
+                                    id="check_username"
+                                    autocomplete="off"
+                                    required
+                                />
+                                <label>Name</label>
+                            </div>
+                            {% if check_username %}
+                            <style>
+                                #check_username {
+                                    color: red;
+                                    border-bottom: 1px solid red;
+                                }
+                            </style>
+                            <script>
+                                const toggle_btn = document.querySelectorAll(".toggle");
+                                const main = document.querySelector("main");
+                                main.classList.toggle("sign-up-mode");
+
+                                toggle_btn.forEach((btn) => {
+                                    btn.addEventListener("click", () => {
+                                        main.classList.toggle("sign-up-mode");
+                                    });
+                                });
+                            </script>
+                            <p style="color: red; font-size: small; margin-bottom: 30px;">Username already exists</p>
+                            {% endif %}
+
+                            <div class="input-wrap">
+                                <input
+                                    type="password"
+                                    name="DPassword"
+                                    minlength="4"
+                                    class="input-field"
+                                    autocomplete="off"
+                                    required
+                                />
+                                <label>Password</label>
+                            </div>
+
+                            <div class="input-wrap">
+                                <input
+                                    type="email"
+                                    name="EmailUser"
+                                    class="input-field"
+                                    autocomplete="off"
+                                    required
+                                />
+                                <label>Email</label>
+                            </div>
+
+                            <input type="submit" value="Sign Up" class="sign-btn" />
+
+                            <p class="text">
+                                By signing up, I agree to the
+                                <a href="#">Terms of Services</a> and
+                                <a href="#">Privacy Policy</a>
+                            </p>
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="carousel">
+                    <div class="images-wrapper">
+                        <img src="/static/img/im1.jpeg" class="image img-1 show" alt="" />
+                        <img src="/static/img/im2.jpeg" class="image img-2" alt="" />
+                        <img src="/static/img/im3.jpeg" class="image img-3" alt="" />
+                    </div>
+
+                    <div class="text-slider">
+                        <div class="text-wrap">
+                            <div class="text-group">
+                                <h2>Generate images based on textual input</h2>
+                                <h2>Create hyper-realistic videos</h2>
+                                <h2>Development of deep learning techniques</h2>
+                            </div>
+                        </div>
+
+                        <div class="bullets">
+                            <span class="active" data-value="1"></span>
+                            <span data-value="2"></span>
+                            <span data-value="3"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <!-- Javascript file -->
+    <script src="/static/jslogin/app.js"></script>
+</body>
+</html>
